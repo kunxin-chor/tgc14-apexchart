@@ -1,0 +1,9 @@
+#container {
+    display: flex;
+}
+
+.chart {
+    flex-basis: 100%;
+    flex: 1;
+    width:100%;
+}
