@@ -1,3 +1,5 @@
+
+
 async function loadData() {
     let response = await axios.get('crime.csv');
     let csvData = response.data;
