@@ -13,18 +13,21 @@ function transformData(rawData) {
     // filter to keep only entries for Clementi Police
     // in the year 2020
     let clementiOnly = rawData.filter(function(n){
-        return n.level_1.includes("Clementi") && n.year == 2020;
+        return n.level_1.includes("Clementi")
+                && n.year == 2020
+                && n.level_1.includes("Total") == false;
     })
-    let clementiOnlyWithoutTotal = clementiOnly.filter(function(n){
-        return n.level_1.includes('Total') == false;
-    })
-    let labels = clementiOnlyWithoutTotal.map(function(n){
+    // let clementiOnlyWithoutTotal = clementiOnly.filter(function(n){
+    //     return n.level_1.includes('Total') == false;
+    // })
+    let labels = clementiOnly.map(function(n){
         return n.level_1.split('-')[1].trim();
     })
-    let series = clementiOnlyWithoutTotal.map(function(n){
+    let series = clementiOnly.map(function(n){
         return n.value;
     })
-    console.log(labels);
-    console.log(series);
-    return clementiOnlyWithoutTotal;
+    return {
+        'labels': labels,
+        'series': series
+    }
 }
