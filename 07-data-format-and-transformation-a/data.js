@@ -24,7 +24,7 @@ function transformData(rawData) {
         return n.level_1.split('-')[1].trim();
     })
     let series = clementiOnly.map(function(n){
-        return n.value;
+        return parseInt(n.value);
     })
     return {
         'labels': labels,
